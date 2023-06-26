@@ -6,6 +6,9 @@
   .utility-bar .page-width {
     max-width: {{ settings.announcementbar_max_width }}px;
   }
+  .announcement-bar__message span {
+    font-size: {{ section.settings.font_size }}px;
+  }
 {% endstyle %}
 
 {%- liquid
@@ -139,6 +142,16 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "accent-1"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 25,
+      "step": 1,
+      "unit": "px",
+      "label": "Tamaño de la fuente",
+      "default": 14
     },
     {
       "type": "checkbox",

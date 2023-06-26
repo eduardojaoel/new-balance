@@ -145,6 +145,336 @@
         "unit": "%",
         "label": "t:settings_schema.typography.settings.body_scale.label",
         "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Tipografía personalizada",
+        "info": "Culquier cambio en esta sección va a reemplazar los ajustes de arriba"
+      },
+      {
+        "type": "html",
+        "id": "google_font_link",
+        "label": "Agregar enlace de proyecto de Google Fonts",
+        "info": "ej: <link href=\"https://fonts.googleapis.com/css2?family=[familia]&display=swap\" rel=\"stylesheet\">"
+      },
+      {
+        "type": "html",
+        "id": "adobe_font_link",
+        "label": "Agregar enlace de proyecto de Adobe Fonts",
+        "info": "ej: <link rel=\"stylesheet\" href=\"https://use.typekit.net/[id].css\"> Mäs información en: https://helpx.adobe.com/la/fonts/using/add-fonts-website.html"
+      },
+      {
+        "type": "html",
+        "id": "shopify_file_link",
+        "label": "Agregar enlace del archivo subido a \"Archivos\"",
+        "info": "Subir archivo de la fuente desde el administrador en 'Contenido > Archivos' y luego copiar el enlace generado ej: https://cdn.shopify.com/s/files/0000/files/[archivo].woff?v=000000"
+      },
+      {
+        "type": "select",
+        "id": "shopify_file_type",
+        "options": [
+          {
+            "value": "otf",
+            "label": "otf"
+          },
+          {
+            "value": "ttf",
+            "label": "ttf"
+          },
+          {
+            "value": "woff",
+            "label": "woff"
+          },
+          {
+            "value": "woff2",
+            "label": "woff2"
+          }
+        ],
+        "default": "woff",
+        "label": "Formato de la fuente",
+        "info": "Seleccionar el formato de la fuente subida a  'Archivos'"
+      },
+      {
+        "type": "header",
+        "content": "Fuente personalizada 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_font_1_enable",
+        "label": "Habilitar fuente"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_1_source",
+        "options": [
+          {
+            "value": "files",
+            "label": "Enlace de archivos"
+          },
+          {
+            "value": "google",
+            "label": "Enlace de Google Fonts"
+          },
+          {
+            "value": "adobe",
+            "label": "Enlace de Adobe Fonts"
+          }
+        ],
+        "default": "files",
+        "label": "Origen de la fuente"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_1_selector",
+        "options": [
+          {
+            "value": "title",
+            "label": "Títulos"
+          },
+          {
+            "value": "body",
+            "label": "Cuerpo"
+          }
+        ],
+        "default": "title",
+        "label": "Aplicar fuente a:",
+        "info": "Aplica la fuente a títulos, cuerpo o ambos"
+      },
+      {
+        "type": "text",
+        "id": "custom_font_1_name",
+        "label": "Nombre de la fuente",
+        "info": "Si la regla de CSS es \"font-family: 'Open Sans', sans-serif;\" sólo escriba \"Open Sans\" sin las comillas"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_1_fallback",
+        "options": [
+          {
+            "value": "serif",
+            "label": "serif"
+          },
+          {
+            "value": "sans-serif",
+            "label": "sans-serif"
+          },
+          {
+            "value": "monospace",
+            "label": "monospace"
+          },
+          {
+            "value": "cursive",
+            "label": "cursive"
+          },
+          {
+            "value": "fantasy",
+            "label": "fantasy"
+          }
+        ],
+        "default": "sans-serif",
+        "label": "Fallback de la fuente",
+        "info": "Si la regla de CSS es \"font-family: 'Open Sans', sans-serif;\" sólo seleccione \"sans-serif\""
+      },
+      {
+        "type": "select",
+        "id": "custom_font_1_style",
+        "options": [
+          {
+            "value": "normal",
+            "label": "normal"
+          },
+          {
+            "value": "italic",
+            "label": "italic"
+          }
+        ],
+        "default": "normal",
+        "label": "Estilo de la fuente"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_1_weight",
+        "options": [
+          {
+            "value": "100",
+            "label": "Thin"
+          },
+          {
+            "value": "200",
+            "label": "Extra Light"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal/Regular"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi Bold"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          },
+          {
+            "value": "800",
+            "label": "Extra Bold"
+          },
+          {
+            "value": "900",
+            "label": "Black"
+          }
+        ],
+        "default": "400",
+        "label": "Peso de la fuente"
+      },
+      {
+        "type": "header",
+        "content": "Fuente personalizada 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_font_2_enable",
+        "label": "Habilitar fuente"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_2_source",
+        "options": [
+          {
+            "value": "files",
+            "label": "Enlace de archivos"
+          },
+          {
+            "value": "google",
+            "label": "Enlace de Google Fonts"
+          },
+          {
+            "value": "adobe",
+            "label": "Enlace de Adobe Fonts"
+          }
+        ],
+        "default": "files",
+        "label": "Origen de la fuente"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_2_selector",
+        "options": [
+          {
+            "value": "title",
+            "label": "Títulos"
+          },
+          {
+            "value": "body",
+            "label": "Cuerpo"
+          }
+        ],
+        "default": "body",
+        "label": "Aplicar fuente a:",
+        "info": "Aplica la fuente a títulos, cuerpo o ambos"
+      },
+      {
+        "type": "text",
+        "id": "custom_font_2_name",
+        "label": "Nombre de la fuente",
+        "info": "Si la regla de CSS es \"font-family: 'Open Sans', sans-serif;\" sólo escriba \"Open Sans\" sin las comillas"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_2_fallback",
+        "options": [
+          {
+            "value": "serif",
+            "label": "serif"
+          },
+          {
+            "value": "sans-serif",
+            "label": "sans-serif"
+          },
+          {
+            "value": "monospace",
+            "label": "monospace"
+          },
+          {
+            "value": "cursive",
+            "label": "cursive"
+          },
+          {
+            "value": "fantasy",
+            "label": "fantasy"
+          }
+        ],
+        "default": "sans-serif",
+        "label": "Fallback de la fuente",
+        "info": "Si la regla de CSS es \"font-family: 'Open Sans', sans-serif;\" sólo seleccione \"sans-serif\""
+      },
+      {
+        "type": "select",
+        "id": "custom_font_2_style",
+        "options": [
+          {
+            "value": "normal",
+            "label": "normal"
+          },
+          {
+            "value": "italic",
+            "label": "italic"
+          }
+        ],
+        "default": "normal",
+        "label": "Estilo de la fuente"
+      },
+      {
+        "type": "select",
+        "id": "custom_font_2_weight",
+        "options": [
+          {
+            "value": "100",
+            "label": "Thin"
+          },
+          {
+            "value": "200",
+            "label": "Extra Light"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "400",
+            "label": "Normal/Regular"
+          },
+          {
+            "value": "500",
+            "label": "Medium"
+          },
+          {
+            "value": "600",
+            "label": "Semi Bold"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          },
+          {
+            "value": "800",
+            "label": "Extra Bold"
+          },
+          {
+            "value": "900",
+            "label": "Black"
+          }
+        ],
+        "default": "400",
+        "label": "Peso de la fuente"
       }
     ]
   },

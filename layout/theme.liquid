@@ -44,6 +44,20 @@
     %}
 
     {% style %}
+      {% if settings.shopify_file_link != blank %}
+        {% if settings.custom_font_1_enable == true and settings.custom_font_1_name != blank and settings.custom_font_1_source == "files" %}
+          @font-face {
+            font-family: "{{ settings.custom_font_1_name }}";
+            src: url("{{ settings.shopify_file_link }}") format("{{ settings.shopify_file_type }}");
+          }
+        {% endif %}
+        {% if settings.custom_font_2_enable == true and settings.custom_font_2_name != blank and settings.custom_font_1_source == "files" %}
+          @font-face {
+            font-family: "{{ settings.custom_font_2_name }}";
+            src: url("{{ settings.shopify_file_link }}") format("{{ settings.shopify_file_type }}");
+          }
+        {% endif %}
+      {% endif %}
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
@@ -82,14 +96,34 @@
       }
 
       :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-body-style: {{ settings.type_body_font.style }};
-        --font-body-weight: {{ settings.type_body_font.weight }};
-        --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+        {% if settings.custom_font_1_enable == true and settings.custom_font_1_name != blank and settings.custom_font_1_selector == 'body' %}
+          --font-body-family: {{ settings.custom_font_1_name | remove: "'" | remove: '"' }}, {{ settings.custom_font_1_fallback }};
+          --font-body-style: {{ settings.custom_font_1_style }};
+          --font-body-weight: {{ settings.custom_font_1_weight }};
+        {% elsif settings.custom_font_2_enable == true and settings.custom_font_2_name != blank and settings.custom_font_2_selector == 'body' %}
+          --font-body-family: {{ settings.custom_font_2_name | remove: "'" | remove: '"' }}, {{ settings.custom_font_2_fallback }};
+          --font-body-style: {{ settings.custom_font_2_style }};
+          --font-body-weight: {{ settings.custom_font_2_weight }};
+        {% else %}
+          --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+          --font-body-style: {{ settings.type_body_font.style }};
+          --font-body-weight: {{ settings.type_body_font.weight }};
+          --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
+        {% endif %}
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
+        {% if settings.custom_font_1_enable == true and settings.custom_font_1_name != blank and settings.custom_font_1_selector == 'title' %}
+          --font-heading-family: {{ settings.custom_font_1_name | remove: "'" | remove: '"' }}, {{ settings.custom_font_1_fallback }};
+          --font-heading-style: {{ settings.custom_font_1_style }};
+          --font-heading-weight: {{ settings.custom_font_1_weight }};
+        {% elsif settings.custom_font_2_enable == true and settings.custom_font_2_name != blank and settings.custom_font_2_selector == 'title' %}
+          --font-heading-family: {{ settings.custom_font_2_name | remove: "'" | remove: '"' }}, {{ settings.custom_font_2_fallback }};
+          --font-heading-style: {{ settings.custom_font_2_style }};
+          --font-heading-weight: {{ settings.custom_font_2_weight }};
+        {% else %}
+          --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+          --font-heading-style: {{ settings.type_header_font.style }};
+          --font-heading-weight: {{ settings.type_header_font.weight }};
+        {% endif %}
 
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
         --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
@@ -223,7 +257,7 @@
         min-height: 100%;
         margin: 0;
         font-size: 1.5rem;
-        letter-spacing: 0.06rem;
+        /* letter-spacing: 0.06rem; */
         line-height: calc(1 + 0.8 / var(--font-body-scale));
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
@@ -238,7 +272,18 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
+
+    {% comment %} Fuentes personalizadas de Google o Adobe {% endcomment %}
+    {% if settings.google_font_link != blank %}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      {{ settings.google_font_link }}
+    {% endif %}
+    {% if settings.adobe_font_link != blank %}
+      {{ settings.adobe_font_link }}
+    {% endif %}
 
     {% comment %} Estilos globales {% endcomment %}
     {% style %}

@@ -8,7 +8,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
             "link": ""
           }
         }
@@ -18,6 +18,7 @@
       ],
       "settings": {
         "color_scheme": "accent-1",
+        "font_size": 14,
         "show_line_separator": false,
         "show_social": false,
         "auto_rotate": false,
@@ -31,7 +32,7 @@
         "logo_svg_width": 60,
         "logo_position": "middle-left",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "enable_text_decoration": false,
         "show_line_separator": true,
@@ -41,6 +42,8 @@
         "enable_language_selector": true,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
+        "side_padding_mobile": 30,
+        "side_padding_desktop": 24,
         "padding_top": 20,
         "padding_bottom": 20
       }
