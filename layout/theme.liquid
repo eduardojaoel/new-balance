@@ -240,6 +240,39 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
 
+    {% comment %} Estilos globales {% endcomment %}
+    {% style %}
+      /* Personaliza el padding lateral de mobile y desktop */
+      .page-width {
+        padding: 0 {{ settings.padding_mobile | times: 0.0625 }}rem;
+      }
+      @media screen and (max-width: 749px) {
+        .page-width.page-no-padding {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .page-width.page-width-full {
+          max-width: 100%;
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      @media screen and (min-width: 750px) {
+        .page-width {
+          padding: 0 {{ settings.padding_desktop | times: 0.0625 }}rem;
+        }
+        .page-width.page-no-padding-desktop {
+          padding-left: 0;
+          padding-right: 0;
+        }
+        .page-width.page-width-full-desktop {
+          max-width: 100%;
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+    {% endstyle %}
+
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
