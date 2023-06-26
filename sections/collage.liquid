@@ -19,7 +19,14 @@
 {%- endstyle -%}
 
 <div class="color-{{ section.settings.color_scheme }} gradient isolate">
-  <div class="page-width{% if section.settings.heading == blank %} no-heading{% endif %} section-{{ section.id }}-padding">
+  <div
+    class="
+      page-width
+      {% if section.settings.section_width == 'wide' %} page-width-full{% endif %}
+      {% if section.settings.section_width_desktop == 'no-padding' %} page-no-padding-desktop{% elsif section.settings.section_width_desktop == 'wide' %} page-width-full-desktop{% endif %}
+      {% if section.settings.heading == blank %} no-heading{% endif %} section-{{ section.id }}-padding
+    "
+  >
     <h2 class="collage-wrapper-title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       {{ section.settings.heading }}
     </h2>
@@ -253,6 +260,42 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Ancho de sección en móvil",
+      "options": [
+        {
+          "value": "padding",
+          "label": "Con relleno"
+        },
+        {
+          "value": "wide",
+          "label": "Ancho de página"
+        }
+      ],
+      "default": "padding"
+    },
+    {
+      "type": "select",
+      "id": "section_width_desktop",
+      "label": "Ancho de sección en escritorio",
+      "options": [
+        {
+          "value": "padding",
+          "label": "Con relleno"
+        },
+        {
+          "value": "no-padding",
+          "label": "Sin relleno"
+        },
+        {
+          "value": "wide",
+          "label": "Ancho de página"
+        }
+      ],
+      "default": "padding"
+    },
     {
       "type": "inline_richtext",
       "id": "heading",

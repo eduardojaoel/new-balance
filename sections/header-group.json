@@ -17,17 +17,26 @@
         "announcement-bar-0"
       ],
       "settings": {
+        "color_scheme": "accent-1",
+        "show_line_separator": false,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5
       }
     },
     "header": {
       "type": "header",
       "settings": {
+        "logo_svg": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 100 48.08\"><path d=\"m32.51 31.36-4 6.91-22.14-1.25 2.22-3.85 23.92-1.82ZM48.52 9.35l2.01 7.62-31.42-2.07 2.22-3.85 27.19-1.71ZM27.69 0h18.39l1.39 5.23-21.99-1.38L27.69 0Zm-1.62 42.56-3.19 5.49L0 48.07l2.22-3.84 23.85-1.67Zm40.16-14.81-5.54 9.6h5.27c2.44 0 6.82-1.22 8.17-4.7 1.25-3.23-1.05-4.9-2.65-4.9h-5.26Zm5.28-9.18 4.6-.03c3.06-.02 6.26-1.42 7.42-4.26 1.08-2.64-.37-4.88-2.29-4.87h-4.45l-5.28 9.16Zm-20.82-1.6 4.65-8.06L71.06 7.9l.55-.98L57.07 5.9l3.4-5.9h26.97c8.29 0 14.43 2.96 12.04 11.68-.72 2.64-4.09 9.29-13.98 12.08 2.1.25 7.32 2.56 6.42 8.57-1.6 10.65-15.38 15.71-23.05 15.72l-31.84.02-1.57-6.16 16.68-1.18.57-.98-18.09-1.1-1.95-7.3 25.74-1.5.56-.97-46.24-2.92 2.21-3.84 49.77-3.23.56-.97-14.59-.95Z\" style=\"fill:#cf0a2c\"><\/path><\/svg>",
+        "logo_svg_width": 60,
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
+        "enable_text_decoration": false,
         "show_line_separator": true,
         "color_scheme": "background-1",
+        "menu_color_scheme": "",
         "enable_country_selector": true,
         "enable_language_selector": true,
         "mobile_logo_position": "center",
