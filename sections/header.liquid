@@ -125,7 +125,8 @@
   /* Elimina la decoración de texto en hover o active */
   {% if section.settings.enable_text_decoration == false %}
     .header__active-menu-item,
-    .header__menu-item:hover span {
+    .header__menu-item:hover span,
+    details[open] > .header__menu-item {
       text-decoration: none;
     }
   {% endif %}
@@ -141,6 +142,18 @@
       padding-right: {{ section.settings.side_padding_desktop | times: 0.0625 }}rem;
     }
   }
+  /* Agrega un pseudo elemento para hacer el recorrido del link al dropdown */
+  {% if section.settings.dropdown_on_hover %}
+    summary.header__menu-item:after {
+      position: absolute;
+      content: "";
+      /* background: orange; */
+      width: 100%;
+      height: calc({{ section.settings.padding_bottom }}px + 2px);
+      top: 100%;
+      left: 0;
+    }
+  {% endif %}
 {%- endstyle -%}
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
@@ -214,10 +227,10 @@
     {%- if request.page_type == 'index' -%}
       <h1 class="header__heading">
     {%- endif -%}
-    <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+    <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset logo">
       {%- if section.settings.logo_svg != blank -%}
         {%- style -%}
-          .header .link svg {
+          .header .logo svg {
             width: {{ section.settings.logo_svg_width }}px;
           }
         {%- endstyle -%}
@@ -591,6 +604,24 @@
   </script>
 {%- endif -%}
 
+{% if section.settings.dropdown_on_hover %}
+  <script>
+    let items = document.querySelector('.header__inline-menu').querySelectorAll('details');
+    console.log(items);
+    items.forEach((item) => {
+      item.addEventListener('mouseover', () => {
+        item.setAttribute('open', true);
+        item.querySelector('ul').addEventListener('mouseleave', () => {
+          item.removeAttribute('open');
+        });
+        item.addEventListener('mouseleave', () => {
+          item.removeAttribute('open');
+        });
+      });
+    });
+  </script>
+{% endif %}
+
 {% schema %}
 {
   "name": "t:sections.header.name",
@@ -642,6 +673,12 @@
       "id": "menu",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "dropdown_on_hover",
+      "label": "Desplegar menú al colocar mouse encima",
+      "default": true
     },
     {
       "type": "select",

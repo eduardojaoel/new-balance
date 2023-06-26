@@ -4,14 +4,14 @@ Hoja de estilos para hacer correcciones del tema Dawn
 ====================================
 */
 /* Coloca fuente del cuerpo a partir del h3 */
-/* h1, h2, .h0, .h1, .h2 {
-    letter-spacing: -0.01em;
-} */
 h3, h4, h5, .h3, .h4, .h5 {
     line-height: calc(1 + 0.8 / var(--font-body-scale));
     font-family: var(--font-body-family);
     font-style: var(--font-body-style);
     font-weight: var(--font-body-weight);
+}
+h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
+    letter-spacing: 0;
 }
 /* Elimina padding innecesarios del header */
 .header__heading-link {
@@ -21,4 +21,11 @@ h3, h4, h5, .h3, .h4, .h5 {
     .header--middle-left .header__heading-link, .header--top-left .header__heading-link {
         margin-left: 0;
     }
+}
+.announcement-link {
+    margin-left: 0.5rem;
+}
+a {
+    color: inherit;
+    font-size: inherit;
 }

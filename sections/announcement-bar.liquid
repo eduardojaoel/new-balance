@@ -6,8 +6,16 @@
   .utility-bar .page-width {
     max-width: {{ settings.announcementbar_max_width }}px;
   }
+  .announcement-bar__message {
+    padding: {{ section.settings.vertical_padding | times: 0.0625 }}rem 0;
+  }
   .announcement-bar__message span {
     font-size: {{ section.settings.font_size }}px;
+    font-weight: {{ section.settings.font_weight }}
+  }
+  .announcement-link {
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: {{ section.settings.font_weight | plus: 100 }}
   }
 {% endstyle %}
 
@@ -34,21 +42,14 @@
         {{ block.shopify_attributes }}
       >
         {%- if section.blocks.first.settings.text != blank -%}
-          {%- if section.blocks.first.settings.link != blank -%}
-            <a
-              href="{{ section.blocks.first.settings.link }}"
-              class="announcement-bar__link link link--text focus-inset animate-arrow"
-            >
-          {%- endif -%}
           <p class="announcement-bar__message h5">
             <span>{{ section.blocks.first.settings.text | escape }}</span>
-            {%- if section.blocks.first.settings.link != blank -%}
-              {% render 'icon-arrow' %}
+            {%- if section.blocks.first.settings.label != blank -%}
+              <a href="{{ section.blocks.first.settings.link }}" class="announcement-link">
+                {{- section.blocks.first.settings.label -}}
+              </a>
             {%- endif -%}
           </p>
-          {%- if section.blocks.first.settings.link != blank -%}
-            </a>
-          {%- endif -%}
         {%- endif -%}
       </div>
     {%- elsif section.blocks.size > 1 -%}
@@ -93,21 +94,12 @@
                   {{ block.shopify_attributes }}
                 >
                   {%- if block.settings.text != blank -%}
-                    {%- if block.settings.link != blank -%}
-                      <a
-                        href="{{ block.settings.link }}"
-                        class="announcement-bar__link link link--text focus-inset animate-arrow"
-                      >
-                    {%- endif -%}
                     <p class="announcement-bar__message h5">
                       <span>{{ block.settings.text | escape }}</span>
-                      {%- if block.settings.link != blank -%}
-                        {% render 'icon-arrow' %}
+                      {%- if block.settings.label != blank -%}
+                        <a href="{{ block.settings.link }}" class="announcement-link">{{ block.settings.label }}</a>
                       {%- endif -%}
                     </p>
-                    {%- if block.settings.link != blank -%}
-                      </a>
-                    {%- endif -%}
                   {%- endif -%}
                 </div>
               </div>
@@ -152,6 +144,60 @@
       "unit": "px",
       "label": "Tamaño de la fuente",
       "default": 14
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "options": [
+        {
+          "value": "100",
+          "label": "Thin"
+        },
+        {
+          "value": "200",
+          "label": "Extra Light"
+        },
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        },
+        {
+          "value": "900",
+          "label": "Black"
+        }
+      ],
+      "default": "400",
+      "label": "Peso de la fuente"
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Especiado vertical",
+      "default": 16
     },
     {
       "type": "checkbox",
@@ -201,6 +247,11 @@
           "id": "text",
           "default": "Welcome to our store",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Texto del enlace"
         },
         {
           "type": "url",

@@ -5,6 +5,9 @@ Hoja de estilos para modificar el proyecto
 */
 
 /* Ajusta la fuente de títulos para tener el espaciado que especifica el branding */
-h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
+h1, h2, .h0, .h1, .h2 {
     letter-spacing: -0.01em;
+}
+.letter-spacing {
+    letter-spacing: .025em;
 }
