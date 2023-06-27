@@ -35,7 +35,7 @@
         "logo_svg_width": 60,
         "logo_position": "middle-left",
         "menu": "main-menu",
-        "dropdown_on_hover": true,
+        "dropdown_on_hover": "click",
         "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "enable_text_decoration": false,

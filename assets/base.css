@@ -2486,12 +2486,11 @@ product-info .loading-overlay:not(.hidden) ~ *,
 .header__icon .icon {
   height: 2rem;
   width: 2rem;
-  fill: none;
+  /* fill: none; */
   vertical-align: middle;
 }
 
-.header__icon,
-.header__icon--cart .icon {
+.header__icon {
   height: 4.4rem;
   width: 4.4rem;
   padding: 0;
